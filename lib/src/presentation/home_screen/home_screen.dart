@@ -86,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-
                     /// #Search
                     Center(
                       child: SizedBox(
@@ -117,29 +116,32 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 20),
 
                     /// #Reklama
-                    SizedBox(
-                      height: 170,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: 3,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (__, index) {
-                            return Container(
-                              height: 170,
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              clipBehavior: Clip.antiAlias,
-                              width: MediaQuery.sizeOf(context).width / 1.3,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/img_anons.png"),
-                                    fit: BoxFit.cover),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(13)),
-                              ),
-                            );
-                          }),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: SizedBox(
+                        height: 170,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: 3,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (__, index) {
+                              return Container(
+                                height: 170,
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                clipBehavior: Clip.antiAlias,
+                                width: MediaQuery.sizeOf(context).width / 1.3,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          "assets/images/img_anons.png"),
+                                      fit: BoxFit.cover),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(13)),
+                                ),
+                              );
+                            }),
+                      ),
                     ),
                     const SizedBox(height: 20),
 
@@ -315,38 +317,41 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     const SizedBox(height: 20),
                     /// Category
-                    SizedBox(
-                      height: 80,
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: category.length,
-                        itemBuilder: (_, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    valueCategory = index;
-                                    controller.animateToPage(valueCategory, duration: const Duration(milliseconds: 700), curve: Curves.linear);
-                                  });
-                                },
-                                child: valueCategory == index
-                                    ? Text(category[index],
-                                        style: const TextStyle(
-                                            color: Color(0xffff7011),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600))
-                                    : Text(category[index],
-                                        style: const TextStyle(
-                                            color: Color(0xff7b7b7b),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600))),
-                          );
-                        },
-                        separatorBuilder: (__, indx) {
-                          return const SizedBox(width: 20);
-                        },
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: SizedBox(
+                        height: 80,
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: category.length,
+                          itemBuilder: (_, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      valueCategory = index;
+                                      controller.animateToPage(valueCategory, duration: const Duration(milliseconds: 700), curve: Curves.linear);
+                                    });
+                                  },
+                                  child: valueCategory == index
+                                      ? Text(category[index],
+                                          style: const TextStyle(
+                                              color: Color(0xffff7011),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600))
+                                      : Text(category[index],
+                                          style: const TextStyle(
+                                              color: Color(0xff7b7b7b),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600))),
+                            );
+                          },
+                          separatorBuilder: (__, indx) {
+                            return const SizedBox(width: 20);
+                          },
+                        ),
                       ),
                     ),
                     Center(
@@ -371,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     /// #orzu blog text
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 24),
                       child: RichText(
                           text: const TextSpan(
                               style: TextStyle(
@@ -387,27 +392,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
 
                     /// #Reklama
-                    SizedBox(
-                      height: 200,
-                      child: ListView.builder(
-                        itemCount: 4,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (_, index) {
-                          return Container(
-                            height: 200,
-                            width: MediaQuery.sizeOf(context).width * 0.85,
-                            margin: const EdgeInsets.symmetric(horizontal: 15),
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/img_reklama.png'),
-                                  fit: BoxFit.cover),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12)),
-                            ),
-                          );
-                        },
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: SizedBox(
+                        height: 200,
+                        width: MediaQuery.sizeOf(context).width,
+                        child: ListView.builder(
+                          itemCount: 4,
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemBuilder: (_, index) {
+                            return Container(
+                              height: 200,
+                              width: MediaQuery.sizeOf(context).width * 0.85,
+                              margin: const EdgeInsets.symmetric(horizontal: 15),
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/img_reklama.png'),
+                                    fit: BoxFit.cover),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -432,81 +441,77 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 20),
                     Center(
                       child: Container(
-                        height: 190,
-                        width: MediaQuery.sizeOf(context).width * 0.85,
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          height: 140,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: const BorderRadius.all(Radius.circular(8)),
-                            boxShadow: [
-                              BoxShadow(
-                                offset: const Offset(0,0),
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 1,
-                                spreadRadius: 1,
-                              )
-                            ]
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  const Text(
-                                    StringTxt.hamaTovarTxt,
+                        height: 140,
+                        width: MediaQuery.sizeOf(context).width * 0.86,
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: const BorderRadius.all(Radius.circular(8)),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(0,0),
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 1,
+                              spreadRadius: 1,
+                            )
+                          ]
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                const Text(
+                                  StringTxt.hamaTovarTxt,
+                                  style: TextStyle(
+                                      color: Color(0xff14A23C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(right: 30),
+                                  child: Text(StringTxt.hamaTovarDescTxt,
+                                      style: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),overflow: TextOverflow.visible,),
+                                ),
+                                Container(
+                                  height: 30,
+                                  alignment: Alignment.center,
+                                  margin: const EdgeInsets.only(right: 30),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffff7011),
+                                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                                  ),
+                                  child: const Text(
+                                    StringTxt.katalogTxt,
                                     style: TextStyle(
-                                        color: Color(0xff14A23C),
-                                        fontSize: 14,
+                                        color: Colors.white,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.w700),
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(right: 30),
-                                    child: Text(StringTxt.hamaTovarDescTxt,
-                                        style: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700),overflow: TextOverflow.visible,),
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    alignment: Alignment.center,
-                                    margin: const EdgeInsets.only(right: 30),
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xffff7011),
-                                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                                    ),
-                                    child: const Text(
-                                      StringTxt.katalogTxt,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ),
-                                ],
-                              )),
-                              Expanded(
-                                  child: Transform.scale(
-                                      scale: 1.6,
-                                      child: const Padding(
-                                        padding: EdgeInsets.only(bottom: 15,right: 15),
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/images/img_card.png'),
-                                          height: 100,
-                                          width: 100,
-                                        ),
-                                      )))
-                            ],
-                          ),
+                                ),
+                              ],
+                            )),
+                            Expanded(
+                                child: Transform.scale(
+                                    scale: 1.6,
+                                    child: const Padding(
+                                      padding: EdgeInsets.only(bottom: 15,right: 15),
+                                      child: Image(
+                                        image: AssetImage(
+                                            'assets/images/img_card.png'),
+                                        height: 100,
+                                        width: 100,
+                                      ),
+                                    )))
+                          ],
                         ),
                       ),
                     ),
